@@ -1,27 +1,89 @@
-テスト
+## users table
+
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null false|
+|email|string|null false, unique true|
+|password|string|null false, unique true, length:minimum:7|
+
+### Association
+- has_one :addresses
+- has_one :profiles
+- has_one :cards
+- has_many :item
 
 
-# README
+## profiles table
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|first-name|string|null false|
+|last-name|string|null false|
+|birthday|date|null false|
+|user_id|integer|null false, foreign_key true|
+|address_id|integer|null false, foreign_key true|
 
-Things you may want to cover:
+### Association
+- belongs_to :user
 
-* Ruby version
 
-* System dependencies
+## cards table
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null false, foreign_key true|
 
-* Database creation
+### Association
+- belongs_to :user
 
-* Database initialization
 
-* How to run the test suite
+## items table
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null false|
+|explain|text|null false|
+|delivery-cost|integer|null false|
+|area|string|null false|
+|limit|string|null false|
+|price|integer|null false|
+|user_id|integer|null false,foreign_key true|
+|category_id|integer|foreign_key true|
+|brand_id|integer|foreign_key true|
+|image_id|integer|foreign_key true|
 
-* Deployment instructions
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
+- belongs_to :image
 
-* ...
+
+## categories table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null false|
+
+### Association
+- has_many :items
+
+
+## brands table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null false|
+
+### Association
+- has_many :items
+
+
+## images table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|text|null false|
+
+### Association
+- has_many :items
