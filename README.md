@@ -36,6 +36,25 @@
 ### Association
 - belongs_to :user
 
+## addresses table
+
+|Column|Type|Options|
+|------|----|-------|
+|first-name|string|null false|
+|last-name|string|null false|
+|first-hurigana|string|null false|
+|last-hurigana|string|null false|
+|post|integer|null false|
+|prefectures|string|null false|
+|city|string|null false|
+|number|string|null false|
+|building|string|null false|
+|phone|string|null false, unique true|
+|user_id|integer|null false, foreign_key true|
+
+### Association
+- belongs_to :user
+
 
 ## items table
 
