@@ -7,10 +7,10 @@
 |password|string|null false, unique true, length:minimum:7|
 
 ### Association
-- has_one :addresses
-- has_one :profiles
-- has_one :cards
-- has_many :item
+- has_one :address
+- has_one :profile
+- has_one :card
+- has_many :items
 
 
 ## profiles table
